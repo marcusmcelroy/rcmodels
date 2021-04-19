@@ -1,6 +1,6 @@
 # 
 
-# diff -all
+# diff all
 
 # version
 # Betaflight / STM32F411 (S411) 4.1.6 Apr 25 2020 / 05:11:39 (283bda8bf) MSP API: 1.42
@@ -9,8 +9,13 @@
 # start the command batch
 batch start
 
+# reset configuration to default settings
+defaults nosave
+
 board_name CRAZYBEEF4FR
 manufacturer_id HAMO
+mcu_id 005f00533437511834383436
+signature 
 
 # name: Mobula7 HD
 
@@ -36,6 +41,7 @@ aux 1 1 1 1300 1700 0 0
 aux 2 2 1 1700 2100 0 0
 aux 3 13 2 1800 2100 0 0
 aux 4 28 0 1800 2100 0 0
+aux 5 35 3 1875 2100 0 0
 
 # vtxtable
 vtxtable bands 6
@@ -112,28 +118,86 @@ set vbat_pid_gain = ON
 set feedforward_transition = 25
 set iterm_relax_type = GYRO
 set throttle_boost = 4
-set p_pitch = 47
-set i_pitch = 72
-set d_pitch = 39
+set p_pitch = 50
+set i_pitch = 50
+set d_pitch = 30
+set f_pitch = 60
+set p_roll = 50
+set i_roll = 45
+set d_roll = 27
+set f_roll = 60
+set p_yaw = 72
+set i_yaw = 55
+set f_yaw = 100
+set angle_level_strength = 110
+set horizon_level_strength = 30
+set horizon_transition = 80
+set level_limit = 70
+set abs_control_gain = 20
+set d_min_roll = 26
+set d_min_pitch = 29
+
+profile 1
+
+# profile 1
+set dyn_lpf_dterm_min_hz = 105
+set dyn_lpf_dterm_max_hz = 255
+set dterm_lowpass2_hz = 225
+set p_pitch = 50
+set i_pitch = 50
+set d_pitch = 30
+set f_pitch = 60
+set p_roll = 50
+set i_roll = 45
+set d_roll = 27
+set f_roll = 60
+set p_yaw = 72
+set i_yaw = 55
+set f_yaw = 100
+
+profile 2
+
+# profile 2
+set dyn_lpf_dterm_min_hz = 105
+set dyn_lpf_dterm_max_hz = 255
+set dterm_lowpass2_hz = 225
+set vbat_pid_gain = ON
+set feedforward_transition = 25
+set iterm_relax_type = GYRO
+set throttle_boost = 4
+set p_pitch = 52
+set i_pitch = 68
+set d_pitch = 44
 set f_pitch = 76
-set p_roll = 44
+set p_roll = 50
 set i_roll = 68
-set d_roll = 37
+set d_roll = 42
 set f_roll = 72
-set p_yaw = 31
-set i_yaw = 72
+set p_yaw = 57
+set i_yaw = 78
 set f_yaw = 72
 set angle_level_strength = 110
 set horizon_level_strength = 30
 set horizon_transition = 80
 set level_limit = 70
 set abs_control_gain = 20
-set d_min_roll = 21
-set d_min_pitch = 23
+set d_min_roll = 36
+set d_min_pitch = 38
+
+# restore original profile selection
+profile 0
 
 rateprofile 0
 
 # rateprofile 0
+set roll_expo = 23
+set pitch_expo = 23
+set roll_srate = 75
+set pitch_srate = 75
+
+rateprofile 1
+
+# rateprofile 1
 set roll_rc_rate = 82
 set pitch_rc_rate = 82
 set yaw_rc_rate = 82
@@ -146,7 +210,23 @@ set yaw_srate = 80
 set tpa_rate = 0
 set tpa_breakpoint = 2000
 
-# end the command batch
-batch end
+rateprofile 2
 
+# rateprofile 2
+set roll_expo = 23
+set pitch_expo = 23
+set roll_srate = 75
+set pitch_srate = 75
+
+rateprofile 3
+
+rateprofile 4
+
+rateprofile 5
+
+# restore original rateprofile selection
+rateprofile 0
+
+# save configuration
+save
 # 
