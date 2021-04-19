@@ -1,7 +1,4 @@
-# version
-# Betaflight / MATEKF411RX (M41R) 4.0.0 Apr 11 2019 / 07:25:57 (9ad2cc844) MSP API: 1.41
-
-# dump = - all
+# dump all
 
 # version
 # Betaflight / MATEKF411RX (M41R) 4.0.0 Apr 11 2019 / 07:25:57 (9ad2cc844) MSP API: 1.41
@@ -203,7 +200,6 @@ feature -ESC_SENSOR
 feature -ANTI_GRAVITY
 feature -DYNAMIC_FILTER
 feature OSD
-feature AIRMODE
 feature RX_SPI
 feature ANTI_GRAVITY
 feature DYNAMIC_FILTER
@@ -349,12 +345,12 @@ mode_color 6 10 0
 mode_color 7 0 3
 
 # aux
-aux 0 0 0 1700 2100 0 0
-aux 1 1 1 1725 2100 0 0
+aux 0 0 0 1400 2100 0 0
+aux 1 1 1 900 1175 0 0
 aux 2 2 1 1375 1650 0 0
 aux 3 13 2 1700 2100 0 0
-aux 4 35 3 1700 2100 0 0
-aux 5 0 0 900 900 0 0
+aux 4 28 1 1300 2100 0 0
+aux 5 30 1 900 1650 1 0
 aux 6 0 0 900 900 0 0
 aux 7 0 0 900 900 0 0
 aux 8 0 0 900 900 0 0
@@ -371,7 +367,7 @@ aux 18 0 0 900 900 0 0
 aux 19 0 0 900 900 0 0
 
 # adjrange
-adjrange 0 0 0 900 900 0 0 0 0
+adjrange 0 0 3 900 2100 12 3 0 0
 adjrange 1 0 0 900 900 0 0 0 0
 adjrange 2 0 0 900 900 0 0 0 0
 adjrange 3 0 0 900 900 0 0 0 0
@@ -472,9 +468,9 @@ set acc_hardware = AUTO
 set acc_lpf_hz = 10
 set acc_trim_pitch = 0
 set acc_trim_roll = 0
-set acc_calibration = -102,-26,-30
+set acc_calibration = -102,16,-18
 set mid_rc = 1500
-set min_check = 1020
+set min_check = 1010
 set max_check = 2000
 set rssi_channel = 0
 set rssi_src_frame_errors = OFF
@@ -491,7 +487,7 @@ set rc_smoothing_debug_axis = ROLL
 set rc_smoothing_input_type = BIQUAD
 set rc_smoothing_derivative_type = BIQUAD
 set rc_smoothing_auto_smoothness = 10
-set fpv_mix_degrees = 0
+set fpv_mix_degrees = 12
 set max_aux_channels = 14
 set serialrx_provider = SBUS
 set serialrx_inverted = OFF
@@ -536,7 +532,7 @@ set align_board_roll = 0
 set align_board_pitch = 0
 set align_board_yaw = 0
 set gimbal_mode = NORMAL
-set bat_capacity = 0
+set bat_capacity = 300
 set vbat_max_cell_voltage = 450
 set vbat_full_cell_voltage = 410
 set vbat_min_cell_voltage = 290
@@ -555,7 +551,7 @@ set ibat_lpf_period = 10
 set vbat_scale = 110
 set vbat_divider = 10
 set vbat_multiplier = 1
-set ibata_scale = 179
+set ibata_scale = 176
 set ibata_offset = 0
 set ibatv_scale = 0
 set ibatv_offset = 0
@@ -674,7 +670,7 @@ set osd_warn_launch_control = OFF
 set osd_warn_no_gps_rescue = ON
 set osd_warn_gps_rescue_disabled = ON
 set osd_rssi_alarm = 20
-set osd_cap_alarm = 2200
+set osd_cap_alarm = 2750
 set osd_alt_alarm = 100
 set osd_esc_temp_alarm = -128
 set osd_esc_rpm_alarm = -1
@@ -689,18 +685,18 @@ set osd_vbat_pos = 2444
 set osd_rssi_pos = 388
 set osd_link_quality_pos = 234
 set osd_tim_1_pos = 234
-set osd_tim_2_pos = 2436
+set osd_tim_2_pos = 2456
 set osd_remaining_time_estimate_pos = 234
 set osd_flymode_pos = 234
 set osd_anti_gravity_pos = 234
 set osd_g_force_pos = 234
 set osd_throttle_pos = 234
-set osd_vtx_channel_pos = 2452
-set osd_crosshairs_pos = 205
+set osd_vtx_channel_pos = 404
+set osd_crosshairs_pos = 2253
 set osd_ah_sbar_pos = 206
 set osd_ah_pos = 78
 set osd_current_pos = 234
-set osd_mah_drawn_pos = 234
+set osd_mah_drawn_pos = 2432
 set osd_motor_diag_pos = 234
 set osd_craft_name_pos = 2090
 set osd_display_name_pos = 234
@@ -718,7 +714,7 @@ set osd_pid_pitch_pos = 234
 set osd_pid_yaw_pos = 234
 set osd_debug_pos = 234
 set osd_power_pos = 234
-set osd_pidrate_profile_pos = 234
+set osd_pidrate_profile_pos = 2074
 set osd_warnings_pos = 329
 set osd_avg_cell_voltage_pos = 234
 set osd_pit_ang_pos = 234
@@ -747,7 +743,7 @@ set osd_stat_endbatt = OFF
 set osd_stat_battery = ON
 set osd_stat_min_rssi = ON
 set osd_stat_max_curr = OFF
-set osd_stat_used_mah = OFF
+set osd_stat_used_mah = ON
 set osd_stat_max_alt = OFF
 set osd_stat_bbox = OFF
 set osd_stat_bb_no = OFF
@@ -788,9 +784,9 @@ set displayport_max7456_wht = 2
 set esc_sensor_halfduplex = OFF
 set esc_sensor_current_offset = 0
 set frsky_spi_autobind = OFF
-set frsky_spi_tx_id = 249,118
-set frsky_spi_offset = -32
-set frsky_spi_bind_hop_data = 2,32,62,92,122,152,182,212,7,37,67,97,127,157,187,217,12,42,72,102,132,162,192,222,17,49,77,107,137,167,197,227,22,52,82,112,142,172,202,232,27,57,87,117,147,179,207,0,0,0
+set frsky_spi_tx_id = 253,56
+set frsky_spi_offset = -21
+set frsky_spi_bind_hop_data = 4,46,84,124,164,204,9,49,89,131,169,209,14,54,94,134,176,214,19,59,99,139,179,219,24,64,104,144,184,224,29,69,109,149,189,229,34,74,114,154,194,234,39,79,119,159,199,0,0,0
 set frsky_x_rx_num = 0
 set frsky_spi_a1_source = VBAT
 set cc2500_spi_chip_detect = ON
@@ -991,20 +987,20 @@ set launch_control_gain = 40
 # profile
 profile 2
 
-set dyn_lpf_dterm_min_hz = 150
+set dyn_lpf_dterm_min_hz = 200
 set dyn_lpf_dterm_max_hz = 250
 set dterm_lowpass_type = BIQUAD
-set dterm_lowpass_hz = 150
+set dterm_lowpass_hz = 100
 set dterm_lowpass2_type = BIQUAD
-set dterm_lowpass2_hz = 150
+set dterm_lowpass2_hz = 0
 set dterm_notch_hz = 0
 set dterm_notch_cutoff = 0
-set vbat_pid_gain = OFF
+set vbat_pid_gain = ON
 set pid_at_min_throttle = ON
 set anti_gravity_mode = SMOOTH
 set anti_gravity_threshold = 250
 set anti_gravity_gain = 5000
-set feedforward_transition = 0
+set feedforward_transition = 25
 set acc_limit_yaw = 0
 set acc_limit = 0
 set crash_dthreshold = 50
@@ -1026,41 +1022,41 @@ set iterm_limit = 400
 set pidsum_limit = 500
 set pidsum_limit_yaw = 400
 set yaw_lowpass_hz = 0
-set throttle_boost = 5
+set throttle_boost = 4
 set throttle_boost_cutoff = 15
 set acro_trainer_angle_limit = 20
 set acro_trainer_lookahead_ms = 50
 set acro_trainer_debug_axis = ROLL
 set acro_trainer_gain = 75
-set p_pitch = 46
-set i_pitch = 70
-set d_pitch = 38
-set f_pitch = 75
-set p_roll = 42
-set i_roll = 60
-set d_roll = 35
-set f_roll = 70
-set p_yaw = 35
-set i_yaw = 100
-set d_yaw = 0
-set f_yaw = 0
-set angle_level_strength = 50
-set horizon_level_strength = 50
-set horizon_transition = 75
-set level_limit = 55
+set p_pitch = 95
+set i_pitch = 25
+set d_pitch = 60
+set f_pitch = 90
+set p_roll = 95
+set i_roll = 25
+set d_roll = 60
+set f_roll = 90
+set p_yaw = 95
+set i_yaw = 0
+set d_yaw = 68
+set f_yaw = 90
+set angle_level_strength = 110
+set horizon_level_strength = 30
+set horizon_transition = 80
+set level_limit = 70
 set horizon_tilt_effect = 75
 set horizon_tilt_expert_mode = OFF
-set abs_control_gain = 0
+set abs_control_gain = 20
 set abs_control_limit = 90
 set abs_control_error_limit = 20
 set abs_control_cutoff = 11
-set use_integrated_yaw = OFF
+set use_integrated_yaw = ON
 set integrated_yaw_relax = 200
-set d_min_roll = 20
-set d_min_pitch = 22
+set d_min_roll = 0
+set d_min_pitch = 0
 set d_min_yaw = 0
-set d_min_boost_gain = 27
-set d_min_advance = 20
+set d_min_boost_gain = 20
+set d_min_advance = 0
 set motor_output_limit = 100
 set auto_profile_cell_count = 0
 set launch_control_mode = NORMAL
@@ -1076,19 +1072,19 @@ profile 1
 rateprofile 0
 
 set thr_mid = 50
-set thr_expo = 50
+set thr_expo = 0
 set rates_type = BETAFLIGHT
-set roll_rc_rate = 80
-set pitch_rc_rate = 80
-set yaw_rc_rate = 80
-set roll_expo = 60
-set pitch_expo = 60
-set yaw_expo = 20
-set roll_srate = 60
-set pitch_srate = 60
-set yaw_srate = 60
-set tpa_rate = 10
-set tpa_breakpoint = 1650
+set roll_rc_rate = 100
+set pitch_rc_rate = 100
+set yaw_rc_rate = 100
+set roll_expo = 23
+set pitch_expo = 23
+set yaw_expo = 0
+set roll_srate = 75
+set pitch_srate = 75
+set yaw_srate = 70
+set tpa_rate = 50
+set tpa_breakpoint = 1500
 set tpa_mode = D
 set throttle_limit_type = OFF
 set throttle_limit_percent = 100
@@ -1099,20 +1095,20 @@ set yaw_rate_limit = 1998
 # rateprofile
 rateprofile 1
 
-set thr_mid = 20
+set thr_mid = 24
 set thr_expo = 50
 set rates_type = BETAFLIGHT
-set roll_rc_rate = 80
-set pitch_rc_rate = 80
-set yaw_rc_rate = 80
+set roll_rc_rate = 100
+set pitch_rc_rate = 100
+set yaw_rc_rate = 210
 set roll_expo = 60
 set pitch_expo = 60
 set yaw_expo = 20
-set roll_srate = 60
-set pitch_srate = 60
-set yaw_srate = 60
-set tpa_rate = 10
-set tpa_breakpoint = 1650
+set roll_srate = 80
+set pitch_srate = 80
+set yaw_srate = 25
+set tpa_rate = 75
+set tpa_breakpoint = 1750
 set tpa_mode = D
 set throttle_limit_type = OFF
 set throttle_limit_percent = 100
@@ -1126,17 +1122,17 @@ rateprofile 2
 set thr_mid = 50
 set thr_expo = 0
 set rates_type = BETAFLIGHT
-set roll_rc_rate = 100
-set pitch_rc_rate = 100
-set yaw_rc_rate = 100
-set roll_expo = 0
-set pitch_expo = 0
-set yaw_expo = 0
-set roll_srate = 70
-set pitch_srate = 70
-set yaw_srate = 70
+set roll_rc_rate = 80
+set pitch_rc_rate = 80
+set yaw_rc_rate = 180
+set roll_expo = 40
+set pitch_expo = 40
+set yaw_expo = 15
+set roll_srate = 80
+set pitch_srate = 80
+set yaw_srate = 25
 set tpa_rate = 50
-set tpa_breakpoint = 1500
+set tpa_breakpoint = 1750
 set tpa_mode = D
 set throttle_limit_type = OFF
 set throttle_limit_percent = 100
@@ -1148,19 +1144,19 @@ set yaw_rate_limit = 1998
 rateprofile 3
 
 set thr_mid = 50
-set thr_expo = 0
+set thr_expo = 50
 set rates_type = BETAFLIGHT
-set roll_rc_rate = 100
-set pitch_rc_rate = 100
-set yaw_rc_rate = 100
-set roll_expo = 0
-set pitch_expo = 0
-set yaw_expo = 0
-set roll_srate = 70
-set pitch_srate = 70
-set yaw_srate = 70
-set tpa_rate = 50
-set tpa_breakpoint = 1500
+set roll_rc_rate = 80
+set pitch_rc_rate = 80
+set yaw_rc_rate = 80
+set roll_expo = 40
+set pitch_expo = 40
+set yaw_expo = 20
+set roll_srate = 80
+set pitch_srate = 80
+set yaw_srate = 80
+set tpa_rate = 10
+set tpa_breakpoint = 1650
 set tpa_mode = D
 set throttle_limit_type = OFF
 set throttle_limit_percent = 100
