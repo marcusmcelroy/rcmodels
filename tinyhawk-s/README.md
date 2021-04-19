@@ -1,0 +1,1 @@
+Betaflight 4.1.0 configuration based upon Project Mockingbird configuration. Based on file BTFL410_MKNGHAWK-S_DIFF_ALL-48kRPM-12-05-19-PUBLIC-BETA.txt found in Facebook group. ESC was flashed with JESC firmware to enable RPM filtering for this model
