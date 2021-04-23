@@ -98,13 +98,27 @@ dma pin B03 0
 feature -RX_PARALLEL_PWM
 feature -AIRMODE
 feature RX_SERIAL
-feature SOFTSERIAL
 feature GPS
+feature TELEMETRY
 feature OSD
+
+# beeper
+beeper -GYRO_CALIBRATED
+beeper -GPS_STATUS
+beeper -ACC_CALIBRATION
+beeper -ACC_CALIBRATION_FAIL
+beeper -ON_USB
+beeper -BLACKBOX_ERASE
+beeper -CAM_CONNECTION_OPEN
+beeper -CAM_CONNECTION_CLOSE
+beeper -RC_SMOOTHING_INIT_FAIL
 
 # beacon
 beacon RX_LOST
 beacon RX_SET
+
+# map
+map TAER1234
 
 # serial
 serial 0 64 115200 57600 0 115200
@@ -113,9 +127,13 @@ serial 2 8192 115200 57600 0 115200
 serial 3 0 19200 57600 0 115200
 
 # aux
-aux 0 0 0 1700 2100 0 0
-aux 1 13 2 1700 2100 0 0
-aux 2 28 0 1700 2100 0 0
+aux 0 0 0 1400 2100 0 0
+aux 1 1 1 1200 1500 0 0
+aux 2 2 1 1500 1800 0 0
+aux 3 46 1 1800 2100 0 0
+aux 4 13 2 1800 2100 0 0
+aux 5 28 0 1800 2100 0 0
+aux 6 35 3 1950 2100 0 0
 
 # vtxtable
 vtxtable bands 6
@@ -126,21 +144,22 @@ vtxtable band 3 BOSCAM_E E CUSTOM  5705 5685 5665    0 5885 5905    0    0
 vtxtable band 4 FATSHARK F CUSTOM  5740 5760 5780 5800 5820 5840 5860 5880
 vtxtable band 5 RACEBAND R CUSTOM  5658 5695 5732 5769 5806 5843 5880 5917
 vtxtable band 6 IMD6     I CUSTOM  5732 5765 5828 5840 5866 5740    0    0
-vtxtable powerlevels 4
-vtxtable powervalues 25 100 200 400
-vtxtable powerlabels 25 100 200 400
+vtxtable powerlevels 3
+vtxtable powervalues 25 200 400
+vtxtable powerlabels 25 200 400
 
 # master
-set acc_calibration = -33,-67,-46,1
+set acc_calibration = -21,-61,10,1
 set mag_hardware = NONE
 set baro_hardware = NONE
-set serialrx_provider = SBUS
+set serialrx_provider = CRSF
 set adc_device = 3
-set blackbox_device = SPIFLASH
+set blackbox_device = NONE
 set dshot_burst = ON
 set dshot_bidir = ON
 set motor_pwm_protocol = DSHOT300
 set motor_poles = 12
+set bat_capacity = 850
 set current_meter = ADC
 set battery_meter = ADC
 set ibata_scale = 160
@@ -150,23 +169,34 @@ set beeper_dshot_beacon_tone = 5
 set small_angle = 180
 set gps_sbas_mode = AUTO
 set gps_auto_baud = ON
+set gps_rescue_sanity_checks = RESCUE_SANITY_FS_ONLY
+set gps_rescue_allow_arming_without_fix = ON
 set pid_process_denom = 2
-set osd_vbat_pos = 2497
+set osd_cap_alarm = 700
+set osd_vbat_pos = 149
+set osd_rssi_pos = 2075
+set osd_link_quality_pos = 2104
 set osd_tim_2_pos = 2519
-set osd_vtx_channel_pos = 2511
-set osd_mah_drawn_pos = 2104
-set osd_craft_name_pos = 2433
+set osd_vtx_channel_pos = 2059
+set osd_crosshairs_pos = 2285
+set osd_ah_pos = 238
+set osd_mah_drawn_pos = 2432
+set osd_craft_name_pos = 385
 set osd_display_name_pos = 328
-set osd_gps_speed_pos = 2177
-set osd_gps_lon_pos = 2145
-set osd_gps_lat_pos = 2113
-set osd_gps_sats_pos = 2081
-set osd_warnings_pos = 14736
-set osd_avg_cell_voltage_pos = 2504
+set osd_gps_speed_pos = 2305
+set osd_gps_lon_pos = 2545
+set osd_gps_lat_pos = 2529
+set osd_gps_sats_pos = 2048
+set osd_home_dir_pos = 2094
+set osd_home_dist_pos = 2096
+set osd_altitude_pos = 2273
+set osd_warnings_pos = 14794
+set osd_avg_cell_voltage_pos = 2497
 set vtx_band = 4
-set vtx_channel = 1
-set vtx_power = 1
-set vtx_freq = 5740
+set vtx_channel = 4
+set vtx_power = 3
+set vtx_freq = 5800
+set vcd_video_system = PAL
 set max7456_spi_bus = 2
 set pinio_config = 129,1,1,1
 set pinio_box = 0,255,255,255
