@@ -1,5 +1,3 @@
-diff all
-
 # version
 # INAV/MATEKF405SE 2.6.1 Feb 25 2021 / 10:39:37 (64249b1a)
 # GCC-9.2.1 20191025 (release) [ARM/arm-9-branch revision 277599]
