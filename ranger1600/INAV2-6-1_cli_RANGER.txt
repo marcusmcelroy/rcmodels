@@ -193,7 +193,7 @@ osd_layout 3 110 8 0 V
 
 # master
 set gyro_hardware_lpf = 256HZ
-set gyro_lpf_hz = 25
+set gyro_lpf_hz = 10
 set dynamic_gyro_notch_enabled = ON
 set dynamic_gyro_notch_q = 250
 set dynamic_gyro_notch_min_hz = 30
@@ -212,7 +212,8 @@ set serialrx_halfduplex = OFF
 set motor_pwm_protocol = STANDARD
 set throttle_idle =  5.000
 set failsafe_procedure = RTH
-set align_board_roll = 15
+set align_board_roll = 10
+set align_board_pitch = -20
 set align_board_yaw = 1800
 set current_meter_offset = -4
 set model_preview_type = 14
