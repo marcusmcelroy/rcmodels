@@ -1,3 +1,5 @@
+diff all
+
 # version
 # INAV/MATEKF405SE 2.6.1 Feb 25 2021 / 10:39:37 (64249b1a)
 # GCC-9.2.1 20191025 (release) [ARM/arm-9-branch revision 277599]
@@ -25,9 +27,10 @@ smix 2 4 0 100 0 -1
 smix 3 5 2 100 0 -1
 
 # servo
-servo 2 1000 2000 1500 -100
-servo 3 1000 2000 1514 -100
-servo 4 1000 2000 1514 -100
+servo 2 1000 2000 1506 -100
+servo 3 1000 2000 1526 -100
+servo 4 1000 2000 1526 -100
+servo 5 1000 2000 1519 100
 
 # safehome
 
@@ -41,6 +44,7 @@ feature -SOFTSERIAL
 feature MOTOR_STOP
 feature GPS
 feature PWM_OUTPUT_ENABLE
+feature FW_LAUNCH
 
 # beeper
 
@@ -90,12 +94,14 @@ osd_layout 0 7 1 1 V
 osd_layout 0 9 11 14 V
 osd_layout 0 11 2 3 H
 osd_layout 0 12 1 14 V
+osd_layout 0 13 13 13 V
 osd_layout 0 14 24 1 V
 osd_layout 0 15 25 7 V
 osd_layout 0 20 19 14 V
 osd_layout 0 21 19 13 V
 osd_layout 0 22 23 1 V
 osd_layout 0 23 23 0 V
+osd_layout 0 25 23 5 V
 osd_layout 0 28 11 0 V
 osd_layout 0 29 1 0 V
 osd_layout 0 30 1 12 V
@@ -110,12 +116,14 @@ osd_layout 1 4 8 6 V
 osd_layout 1 7 1 1 V
 osd_layout 1 9 11 14 V
 osd_layout 1 12 1 14 V
+osd_layout 1 13 13 13 V
 osd_layout 1 14 24 1 V
 osd_layout 1 15 25 7 V
 osd_layout 1 20 19 14 V
 osd_layout 1 21 19 13 V
 osd_layout 1 22 23 1 V
 osd_layout 1 23 23 0 V
+osd_layout 1 25 23 5 V
 osd_layout 1 28 11 0 V
 osd_layout 1 29 1 0 V
 osd_layout 1 30 1 12 V
@@ -128,9 +136,11 @@ osd_layout 2 4 8 6 V
 osd_layout 2 7 1 1 V
 osd_layout 2 9 11 14 V
 osd_layout 2 12 1 14 V
+osd_layout 2 13 13 13 V
 osd_layout 2 15 25 7 V
 osd_layout 2 22 23 1 V
 osd_layout 2 23 23 0 V
+osd_layout 2 25 23 5 V
 osd_layout 2 28 11 0 V
 osd_layout 2 29 1 0 V
 osd_layout 2 30 1 12 V
@@ -183,7 +193,10 @@ osd_layout 3 110 8 0 V
 
 # master
 set gyro_hardware_lpf = 256HZ
-set gyro_lpf_hz = 20
+set gyro_lpf_hz = 10
+set dynamic_gyro_notch_enabled = ON
+set dynamic_gyro_notch_q = 250
+set dynamic_gyro_notch_min_hz = 30
 set acc_hardware = MPU6000
 set acczero_x = 65
 set acczero_y = -25
@@ -197,23 +210,33 @@ set pitot_hardware = NONE
 set serialrx_provider = CRSF
 set serialrx_halfduplex = OFF
 set motor_pwm_protocol = STANDARD
+set throttle_idle =  5.000
 set failsafe_procedure = RTH
-set failsafe_mission = OFF
-set align_board_roll = 9
-set align_board_pitch = -34
+set align_board_roll = 10
+set align_board_pitch = -20
 set align_board_yaw = 1800
-set current_meter_scale = 282
-set current_meter_offset = -45
+set current_meter_offset = -4
 set model_preview_type = 14
 set small_angle = 180
+set imu_acc_ignore_rate = 9
+set imu_acc_ignore_slope = 5
 set applied_defaults = 3
 set gps_ublox_use_galileo = ON
-set nav_wp_radius = 3000
+set mc_airmode_type = STICK_CENTER_ONCE
+set nav_wp_radius = 2000
 set nav_rth_climb_first = OFF
 set nav_rth_allow_landing = FS_ONLY
-set nav_rth_altitude = 7500
-set nav_fw_loiter_radius = 6000
+set nav_rth_altitude = 6000
+set nav_fw_bank_angle = 40
+set nav_fw_loiter_radius = 7500
 set nav_fw_control_smoothness = 2
+set nav_fw_launch_velocity = 200
+set nav_fw_launch_accel = 1600
+set nav_fw_launch_max_angle = 60
+set nav_fw_launch_thr = 1800
+set nav_fw_launch_idle_thr = 1300
+set nav_fw_launch_motor_delay = 250
+set nav_fw_launch_timeout = 10000
 set osd_dist_alarm = 0
 set osd_gforce_alarm =  0.000
 set osd_gforce_axis_alarm_min =  0.000
@@ -229,19 +252,34 @@ set osd_camera_fov_h = 150
 set osd_camera_fov_v = 120
 set osd_failsafe_switch_layout = ON
 set name = RANGER
+set tz_automatic_dst = EU
 set vtx_channel = 4
 
 # profile
 profile 1
 
+set fw_p_pitch = 13
+set fw_i_pitch = 28
+set fw_ff_pitch = 131
+set fw_p_roll = 9
+set fw_i_roll = 20
+set fw_ff_roll = 91
+set fw_p_yaw = 10
+set fw_i_yaw = 21
+set fw_ff_yaw = 97
 set max_angle_inclination_rll = 600
-set max_angle_inclination_pit = 400
+set max_angle_inclination_pit = 450
 set dterm_lpf_hz = 10
+set fw_turn_assist_pitch_gain =  0.500
+set nav_fw_pos_z_p = 20
+set nav_fw_pos_z_d = 5
+set nav_fw_pos_xy_p = 60
+set d_boost_factor =  1.000
 set rc_expo = 30
-set rc_yaw_expo = 70
+set rc_yaw_expo = 30
 set roll_rate = 18
 set pitch_rate = 12
-set yaw_rate = 9
+set yaw_rate = 6
 set manual_rc_expo = 30
 
 # profile
@@ -255,9 +293,9 @@ profile 3
 # battery_profile
 battery_profile 1
 
-set battery_capacity = 2200
-set battery_capacity_warning = 660
-set battery_capacity_critical = 330
+set battery_capacity = 3000
+set battery_capacity_warning = 900
+set battery_capacity_critical = 450
 
 # battery_profile
 battery_profile 2
