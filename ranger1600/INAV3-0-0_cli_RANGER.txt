@@ -27,10 +27,10 @@ smix 2 4 0 100 0 -1
 smix 3 5 2 100 0 -1
 
 # servo
-servo 2 1000 2000 1506 -100
-servo 3 1000 2000 1526 -100
-servo 4 1000 2000 1526 -100
-servo 5 1000 2000 1519 100
+servo 2 1000 2000 1556 -100
+servo 3 1000 2000 1436 -100
+servo 4 1000 2000 1436 -100
+servo 5 1000 2000 1690 100
 
 # safehome
 
@@ -212,8 +212,8 @@ set serialrx_halfduplex = OFF
 set motor_pwm_protocol = STANDARD
 set throttle_idle =  5.000
 set failsafe_procedure = RTH
-set align_board_roll = 9
 set align_board_yaw = 1800
+set current_meter_scale = 273
 set model_preview_type = 14
 set small_angle = 180
 set imu_acc_ignore_rate = 10
@@ -246,19 +246,20 @@ set osd_crsf_lq_format = TYPE2
 set name = RANGER
 set tz_automatic_dst = EU
 set vtx_channel = 4
+set vtx_power = 4
 
 # profile
 profile 1
 
 set fw_p_pitch = 15
-set fw_i_pitch = 10
-set fw_ff_pitch = 60
-set fw_p_roll = 10
-set fw_i_roll = 8
-set fw_ff_roll = 40
-set fw_p_yaw = 20
-set fw_i_yaw = 5
-set fw_ff_yaw = 100
+set fw_i_pitch = 33
+set fw_ff_pitch = 154
+set fw_p_roll = 11
+set fw_i_roll = 23
+set fw_ff_roll = 106
+set fw_p_yaw = 10
+set fw_i_yaw = 21
+set fw_ff_yaw = 97
 set max_angle_inclination_rll = 600
 set max_angle_inclination_pit = 600
 set fw_turn_assist_pitch_gain =  0.500
@@ -266,11 +267,12 @@ set nav_fw_pos_z_p = 20
 set nav_fw_pos_z_d = 5
 set nav_fw_pos_xy_p = 50
 set d_boost_factor =  1.000
+set fw_level_pitch_trim =  2.000
 set rc_expo = 30
 set rc_yaw_expo = 30
-set roll_rate = 18
+set roll_rate = 13
 set pitch_rate = 9
-set yaw_rate = 3
+set yaw_rate = 6
 
 # profile
 profile 2
